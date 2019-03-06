@@ -12,12 +12,15 @@ use Illuminate\Foundation\Bus\Dispatchable;
 class SendBdWish implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    
+    public $id;
 
     /**
      * Create a new job instance.
      */
-    public function __construct()
+    public function __construct($id)
     {
+        $this->id = $id;
     }
 
     /**
@@ -25,7 +28,13 @@ class SendBdWish implements ShouldQueue
      */
     public function handle()
     {
-        \Log::Info(User::count());
+        $user = User::find($this->id);
+        \Log::Info($user);
+
+        /**
+         * Send the email to user
+         * Send the sms to user
+         */
         sleep(1);
     }
 }

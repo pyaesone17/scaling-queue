@@ -37,7 +37,7 @@ class PushQueues extends Command
     public function handle()
     {
         for ($i = 0; $i < 100; ++$i) {
-            SendBdWish::dispatch();
+            SendBdWish::dispatch(1);
         }
     }
 }
